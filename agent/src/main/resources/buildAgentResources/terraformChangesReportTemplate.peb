@@ -45,13 +45,11 @@
 {# @pebvariable name="spaces" type="Integer" #}
 {# @pebvariable name="_name" type="String" #}
 {# @pebvariable name="indentation" type="jetbrains.buildServer.terraformSupportPlugin.report.IndentationFunction" #}
-    {% autoescape false %}
     {{ renderChangeSymbol(valueDelta.changeType) }}{{ indentation(indent) }}{{ renderNameBlock(valueDelta, _name = _name) }}{{ valueDelta.openingBracket }}{{ renderForcesReplacement(valueDelta) }}<br>
     {% for nestedValueDelta in valueDelta.getChangedValues -%}
         {{ renderValueDelta(nestedValueDelta, indent = indent + 1) }}
     {% endfor %}
     {{ renderChangeSymbol(valueDelta.changeType, spaces = 2) }}{{ indentation(indent) }}{{ valueDelta.closingBracket }}<br>
-    {% endautoescape %}
 {% endmacro %}
 
 {% macro renderSimpleValueDelta(simpleValueDelta, indent=0, _name) %}
@@ -59,9 +57,7 @@
 {# @pebvariable name="indent" type="Integer" #}
 {# @pebvariable name="_name" type="String" #}
 {# @pebvariable name="indentation" type="jetbrains.buildServer.terraformSupportPlugin.report.IndentationFunction" #}
-    {% autoescape false %}
-    {{ renderChangeSymbol(simpleValueDelta.changeType) }}{{ indentation(indent) }}{{ renderNameBlock(simpleValueDelta, _name = _name) }}{{ simpleValueDelta.represent }}{{ renderForcesReplacement(simpleValueDelta) }}<br>
-    {% endautoescape %}
+    {{ renderChangeSymbol(simpleValueDelta.changeType) }}{{ indentation(indent) }}{{ renderNameBlock(simpleValueDelta, _name = _name) }}{% if simpleValueDelta.isRemoved %}<s>{{ simpleValueDelta.represent }}</s>{% else %}{{ simpleValueDelta.represent }}{% endif %}{{ renderForcesReplacement(simpleValueDelta) }}<br>
 {% endmacro %}
 {# END OF MACRO BLOCK #}
 {# @pebvariable name="planData" type="jetbrains.buildServer.terraformSupportPlugin.jsonOutput.model.PlanData" #}

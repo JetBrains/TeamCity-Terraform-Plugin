@@ -25,12 +25,16 @@ class TerraformReportTab(
     buildManager,
     descriptor.getPluginResourcesPath("terraformChangesReport.jsp")
 ) {
-    init {
-        addCssFile(descriptor.getPluginResourcesPath("terraformChangesReport.css"))
+    // the report is rendered in a sandboxed iframe, which does not inherit the page styles
+    private val reportCss: String by lazy {
+        TerraformReportTab::class.java.getResourceAsStream("/buildServerResources/terraformChangesReport.css")
+            ?.bufferedReader()?.use { it.readText() }
+            ?: ""
     }
 
     override fun isAvailableFor(build: SBuild): Boolean {
-        return getTerraformReportFromBuildArtifacts(build) != null
+        return build.getBuildFeaturesOfType(TerraformFeatureConstants.FEATURE_TYPE).isNotEmpty() &&
+                getTerraformReportFromBuildArtifacts(build) != null
     }
 
     private fun getTerraformReportFromBuildArtifacts(build: SBuild): BuildArtifact? {
@@ -56,6 +60,7 @@ class TerraformReportTab(
                 Collectors.joining("\n")
             )
             model["reportString"] = reportString
+            model["reportCss"] = reportCss
         } catch (e: Exception) {
             Loggers.SERVER.warnAndDebugDetails(
                 "Cannot process Terraform report artifact to show it in the build tab",

@@ -38,7 +38,7 @@ class SimpleValueDelta(
                     "$before -> $after"
                 }
                 isRemoved -> {
-                    "<s>$before</s>"
+                    before.toString()
                 }
                 else -> { //should never reach here
                     "¯\\_(ツ)_/¯"
