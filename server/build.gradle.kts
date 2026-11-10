@@ -19,7 +19,6 @@ dependencies {
 }
 
 teamcity {
-    // Use TeamCity 8.1 API
     version = rootProject.ext["teamcityVersion"] as String
 
     server {
