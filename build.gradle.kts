@@ -11,9 +11,9 @@ allprojects {
 }
 
 plugins {
-    id("com.github.rodm.teamcity-common") version "1.1" apply false
-    id("com.github.rodm.teamcity-agent") version "1.1" apply false
-    id("com.github.rodm.teamcity-server") version "1.1" apply false
+    id("com.github.rodm.teamcity-common") version "1.4.1" apply false
+    id("com.github.rodm.teamcity-agent") version "1.4.1" apply false
+    id("com.github.rodm.teamcity-server") version "1.4.1" apply false
 
     kotlin("jvm") version "1.4.10"
 }

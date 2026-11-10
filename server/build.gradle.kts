@@ -30,7 +30,7 @@ teamcity {
 
     environments {
         operator fun String.invoke(block: TeamCityEnvironment.() -> Unit) {
-            environments.create(this, closureOf(block))
+            environments.create(this, block)
         }
 
         "teamcity" {
