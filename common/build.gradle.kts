@@ -4,7 +4,7 @@ plugins {
 }
 
 dependencies {
-    compile(kotlin("stdlib"))
+    implementation(kotlin("stdlib"))
 }
 
 
@@ -14,5 +14,5 @@ teamcity {
 
 
 tasks.withType<Jar> {
-    baseName = "terraform-common"
+    archiveBaseName.set("terraform-common")
 }

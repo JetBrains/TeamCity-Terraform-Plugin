@@ -21,16 +21,12 @@ teamcity {
 }
 
 dependencies {
-    compile(
-        kotlin("stdlib")
-    )
-    compile(
-        project(":common")
-    )
-    compile("com.fasterxml.jackson.core:jackson-databind:2.14.2")
-    compile("com.fasterxml.jackson.module:jackson-module-kotlin:2.14.2")
-    compile("io.pebbletemplates:pebble:3.2.0")
-    compile("com.google.guava:guava:31.1-jre")
+    implementation(kotlin("stdlib"))
+    implementation(project(":common"))
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.14.2")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.14.2")
+    implementation("io.pebbletemplates:pebble:3.2.0")
+    implementation("com.google.guava:guava:31.1-jre")
     implementation("org.apache.commons:commons-text:1.10.0")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
@@ -43,7 +39,7 @@ configurations.all {
 var mainClassName = "jetbrains.buildServer.terraformSupportPlugin.TerraformSupport"
 
 tasks.withType<Jar> {
-    baseName = "terraform-agent"
+    archiveBaseName.set("terraform-agent")
 
 
 }

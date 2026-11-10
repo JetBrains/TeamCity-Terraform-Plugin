@@ -15,11 +15,11 @@ plugins {
     id("com.github.rodm.teamcity-agent") version "1.4.1" apply false
     id("com.github.rodm.teamcity-server") version "1.4.1" apply false
 
-    kotlin("jvm") version "1.4.10"
+    kotlin("jvm") version "2.0.21"
 }
 
 ext {
-    set("teamcityVersion", "2021.1")
+    set("teamcityVersion", "2026.2")
 }
 
 group = "jetbrains.buildserver"
@@ -35,7 +35,6 @@ subprojects {
 
     repositories {
         mavenCentral()
-        jcenter()
     }
 
     group = rootProject.group
