@@ -28,8 +28,8 @@ dependencies {
     implementation("io.pebbletemplates:pebble:3.2.2")
     implementation("com.google.guava:guava:33.3.1-jre")
     implementation("org.apache.commons:commons-text:1.12.0")
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.11.3")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.11.3")
 }
 
 configurations.all {
