@@ -8,8 +8,8 @@ plugins {
 }
 
 dependencies {
-    compile(kotlin("stdlib"))
-    compile(project(":common"))
+    implementation(kotlin("stdlib"))
+    implementation(project(":common"))
 
     ///for BuildProblemManager
     compileOnly("org.jetbrains.teamcity.internal:server:${rootProject.ext["teamcityVersion"]}")
@@ -41,7 +41,7 @@ teamcity {
 
 
 tasks.withType<Jar> {
-    baseName = "terraform-plugin"
+    archiveBaseName.set("terraform-plugin")
 }
 
 task("teamcity") {
